@@ -14,6 +14,7 @@ struct RecepitView: View {
     @State private var editedAddress = ""
     @State private var scrollProxy: ScrollViewProxy? = nil
     @State private var change = false
+    var passedlaundryShopName : LaundryShopModel
     
     var body: some View {
         VStack{
@@ -78,12 +79,12 @@ struct RecepitView: View {
                             VStack (alignment: .leading) {
                                 Text("Service")
                                     .foregroundColor(.blue)
-//                                     made the service dynamic
+                                //                                     made the service dynamic
                                 ForEach(shared.selectedServices,id:\.self){service in
-                                        Text(service)
+                                    Text(service)
                                     
                                 }
-
+                                
                             }
                             Spacer()
                             
@@ -102,16 +103,18 @@ struct RecepitView: View {
                                     .foregroundColor(.blue)
                                 
                                 if !change {
-                                    Text(self.locationVM.userAddress ?? self.editedAddress)
-                                        .font(.system(size: 10))
-                                        .bold()
-                                        .foregroundColor(.blue)
-                                        .minimumScaleFactor(0.5)
+                                    Text("\(self.locationVM.userAddress ?? self.editedAddress) - \(passedlaundryShopName.name)")
+                                        .font(.system(size: 15))
+                                        .foregroundColor(.black)
+                                        .lineLimit(1)
+                                        .frame(maxWidth:85)
                                 } else {
-                                    Text(self.editedAddress)
-                                        .font(.system(size: 10))
-                                        .bold()
-                                        .foregroundColor(.blue)
+                                    Text("\(self.editedAddress) - \(passedlaundryShopName.name)")
+                                        .font(.system(size: 15))
+                                        .lineLimit(1)
+                                        .foregroundColor(.black)
+                                        .frame(maxWidth:85)
+                                    
                                 }
                             }
                             
@@ -138,7 +141,7 @@ struct RecepitView: View {
                             Text("Total")
                                 .foregroundColor(.white)
                             Spacer()
-                            Text("40 B")
+                            Text("150 B")
                                 .foregroundColor(.white)
                         }
                         .padding(5)
@@ -150,7 +153,7 @@ struct RecepitView: View {
                     .cornerRadius(10)
                     .padding([.top, .leading, .trailing],20)
                     
-//                    AddressView()
+                    //                    AddressView()
                     
                     ScrollViewReader { proxy in
                         ScrollView {
@@ -177,7 +180,7 @@ struct RecepitView: View {
                                                         .bold()
                                                         .foregroundColor(.blue)
                                                 }
-                                              
+                                                
                                             } // end of VStack
                                             .padding()
                                             
@@ -189,11 +192,10 @@ struct RecepitView: View {
                                             
                                             VStack {
                                                 Image("machine")
-                                                Text("Machine")
-                                                    .font(.caption)
-                                                    .bold()
+                                                Text(passedlaundryShopName.name)
+                                                    .font(.system(size: 15))
                                                     .foregroundColor(.blue)
-
+                                                
                                             }
                                             .padding()
                                             
@@ -220,7 +222,7 @@ struct RecepitView: View {
                                             }
                                             .padding()
                                         }
-                                        .foregroundColor(.white)
+                                            .foregroundColor(.white)
                                     )
                             }
                             .padding([.leading, .trailing],20)
@@ -241,7 +243,7 @@ struct RecepitView: View {
                                             }
                                             
                                             Spacer()
-
+                                            
                                             Button(action: {
                                                 if isEditing {
                                                     address = editedAddress // Update address here
@@ -264,7 +266,7 @@ struct RecepitView: View {
                                             }
                                             .padding(.horizontal)
                                         }
-                                        .padding()
+                                            .padding()
                                     )
                             }
                             .padding()
@@ -273,34 +275,34 @@ struct RecepitView: View {
                             scrollProxy = proxy
                         }
                     }
-
+                    
                     
                     RoundedRectangle(cornerRadius: 6)
-                         .foregroundStyle(.white)
-                         .frame(width:360,height:40)
-                         .shadow(color:.gray,radius:2)
-                         .overlay(
-                             HStack{
-                                 Text("Your Current Location")
-                                     .foregroundStyle(.black)
-                                     .font(.system(size:20))
-                                 Spacer()
-                                 Button {
-                                     self.locationVM.requestLocation()
-                                     change = false
-                                     self.editedAddress = locationVM.userAddress ?? ""
-                                 } label: {
-                                     Image(systemName:"location.north.circle.fill")
-                                         .resizable()
-                                         .aspectRatio(contentMode: .fit)
-                                         .frame(width:25,height:25)
-                                         .foregroundStyle(.black)
-
-                                 }
-                                 
-                             }
-                                 .padding()
-                         )
+                        .foregroundStyle(.white)
+                        .frame(width:360,height:40)
+                        .shadow(color:.gray,radius:2)
+                        .overlay(
+                            HStack{
+                                Text("Your Current Location")
+                                    .foregroundStyle(.black)
+                                    .font(.system(size:20))
+                                Spacer()
+                                Button {
+                                    self.locationVM.requestLocation()
+                                    change = false
+                                    self.editedAddress = locationVM.userAddress ?? ""
+                                } label: {
+                                    Image(systemName:"location.north.circle.fill")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(width:25,height:25)
+                                        .foregroundStyle(.black)
+                                    
+                                }
+                                
+                            }
+                                .padding()
+                        )
                     
                     Spacer()
                     
@@ -338,7 +340,7 @@ struct RecepitView: View {
                 }
             }
         }.background(Color.wasshaBackgroundColor)
-
+        
     }
     
     func submit() {

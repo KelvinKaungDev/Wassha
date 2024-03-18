@@ -147,7 +147,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		394102DA2B8DC38300410009 /* Kelvin */ = {
+		39FB52A42BA80BCF009366F5 /* CheckOut */ = {
 			isa = PBXGroup;
 			children = (
 				394102DB2B8DC3B600410009 /* OrderOverviewView.swift */,
@@ -157,7 +157,7 @@
 				396C857E2B98B5440074C1C6 /* CheckoutView.swift */,
 				390D80A22BA37EAB00C206F2 /* LocationView.swift */,
 			);
-			path = Kelvin;
+			path = CheckOut;
 			sourceTree = "<group>";
 		};
 		B352D74D2B9B7A630036707D /* Helper */ = {
@@ -223,7 +223,6 @@
 				B352D76B2B9B7E010036707D /* Info.plist */,
 				B352D7692B9B7DEE0036707D /* GoogleService-Info.plist */,
 				B352D74D2B9B7A630036707D /* Helper */,
-				394102DA2B8DC38300410009 /* Kelvin */,
 				BCFEEECF2B8B92640060DFB5 /* DataService */,
 				BCFEEEB12B8B676E0060DFB5 /* Model */,
 				BCFEEEB02B8B67650060DFB5 /* ViewModel */,
@@ -248,6 +247,7 @@
 		BCFEEEAF2B8B675E0060DFB5 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				39FB52A42BA80BCF009366F5 /* CheckOut */,
 				BCBF27462B92FF33003AAF18 /* SignIn */,
 				BCBF273D2B92F330003AAF18 /* Onboarding */,
 				BCFEEEB52B8B67960060DFB5 /* Category */,

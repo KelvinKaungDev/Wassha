@@ -15,7 +15,7 @@ struct OrderOverviewView: View {
 //        ["Woollen items": ["trousers": 0, "dress": 0]]
 //    ]
     
-    
+    var laundryShopName : LaundryShopModel
     @ObservedObject var clothesviewModel: ClothesSelectionViewModel
     
     var limitRange: ClosedRange<Date>{
@@ -111,7 +111,7 @@ struct OrderOverviewView: View {
                             
                         }
                         
-                        NavigationLink(destination: RecepitView(arrayOfArrays: self.clothesviewModel.selectedClothes, startDate: startDate, startTime: startTime, endTime: endTime)) {
+                        NavigationLink(destination: RecepitView(arrayOfArrays: self.clothesviewModel.selectedClothes, startDate: startDate, startTime: startTime, endTime: endTime, passedlaundryShopName: laundryShopName)) {
                             Text("Show Detail")
                                 .frame(maxWidth: .infinity)
                                 .padding()

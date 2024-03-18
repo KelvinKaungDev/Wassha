@@ -6,7 +6,6 @@ struct AddressView: View {
     @State private var editedAddress = ""
     @State private var scrollProxy: ScrollViewProxy? = nil
 
-
     var body: some View {
         ScrollViewReader { proxy in
             ScrollView {
@@ -113,5 +112,3 @@ struct AddressView: View {
         }
     }
 }
-
-x
